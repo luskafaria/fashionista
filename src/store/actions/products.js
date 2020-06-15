@@ -1,8 +1,16 @@
 const TYPES = {
+  SET_LOADING: 'SET_LOADING',
   SET_PRODUCTS: 'SET_PRODUCTS',
   GET_PRODUCT: 'GET_PRODUCT',
   SET_FILTERED_PRODUCTS: 'SET_FILTERED_PRODUCTS',
   TOGGLE_SEARCH: 'TOGGLE_SEARCH',
+};
+
+const setLoading = (data) => {
+  return {
+    type: TYPES.SET_LOADING,
+    payload: data,
+  };
 };
 
 const setProducts = (data) => {
@@ -25,4 +33,4 @@ const toggleSearch = () => {
   };
 };
 
-export { TYPES, setProducts, setFilteredProducts, toggleSearch };
+export { TYPES, setProducts, setFilteredProducts, toggleSearch, setLoading };

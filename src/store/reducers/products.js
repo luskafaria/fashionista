@@ -1,6 +1,7 @@
 import { TYPES } from '../actions/products';
 
 export const defaultState = {
+  loading: false,
   products: [],
   filteredProducts: [],
   filterOpen: false,
@@ -10,6 +11,11 @@ const productsReducer = (state = defaultState, action) => {
   console.log(action.type);
 
   switch (action.type) {
+    case TYPES.SET_LOADING:
+      return {
+        loading: action.payload,
+      };
+
     case TYPES.SET_PRODUCTS:
       return {
         ...state,

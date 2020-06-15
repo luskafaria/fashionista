@@ -22,12 +22,10 @@ const Product = () => {
   );
 
   useEffect(() => {
-    if (products.length === 0) {
-      getProducts
-        .then((data) => dispatch(setProducts(data)))
-        .catch((err) => console.log(err));
-    }
-  }, [dispatch, products]);
+    getProducts
+      .then((data) => dispatch(setProducts(data)))
+      .catch((err) => console.log(err));
+  }, [dispatch]);
 
   useEffect(() => {
     if (productId !== -1) {

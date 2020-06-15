@@ -7,19 +7,24 @@ import { setProducts } from '../../store/actions/products';
 import ProductsCounter from '../../components/ProductsCounter';
 import ProductsGrid from '../../components/ProductsGrid';
 
+import Loading from '../../components/Loading';
+
 const ProductsContainer = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    getProducts
-      .then((data) => dispatch(setProducts(data)))
-      .catch((err) => console.log(err));
-  }, [dispatch]);
-
   const { products } = useSelector((state) => state.productsReducer);
+
+  useEffect(() => {
+    setTimeout(() => {
+      getProducts
+        .then((data) => dispatch(setProducts(data)))
+        .catch((err) => console.log(err));
+    }, 2000);
+  }, [dispatch]);
 
   return (
     <Container>
+      {products.length === 0 && <Loading />}
       <ProductsCounter productsQuantity={products.length} />
       <ProductsGrid products={products} />
     </Container>
